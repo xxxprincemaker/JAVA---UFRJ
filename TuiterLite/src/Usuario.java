@@ -19,10 +19,6 @@ public class Usuario {
         this.nivel = NivelUsuario.INICIANTE;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public void setFoto(Image foto) {
         this.foto = foto;
     }
@@ -47,10 +43,7 @@ public class Usuario {
         return nivel;
     }
 
-    public int getNumeroTwitts() {
-        return numeroTwitts;
-    }
-
+    public int getNumeroTwitts() { return numeroTwitts;  }
     public void setNumeroTwitts(int numeroTwitts) {
         this.numeroTwitts = numeroTwitts;
     }

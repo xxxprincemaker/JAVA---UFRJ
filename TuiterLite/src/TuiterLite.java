@@ -22,8 +22,8 @@ public class TuiterLite<T> {
     private ArrayList<RegistraMaiorHashtag> registros;
     private int numTwitts;
 
-    public TuiterLite(){ this.usuariosCadastradosArrayList = new ArrayList<Usuario>();
-                        this.tuitesFeitosArrayList = new ArrayList<Tuite>();
+    public TuiterLite(){ this.usuariosCadastradosArrayList = new ArrayList<>();
+                        this.tuitesFeitosArrayList = new ArrayList<>();
                         this.registros = new ArrayList<RegistraMaiorHashtag>();
                         }
 
@@ -44,10 +44,6 @@ public class TuiterLite<T> {
         usuariosCadastrados = new Usuario(nome, email);
         numTwitts = usuariosCadastrados.getNumeroTwitts();
         usuariosCadastradosArrayList.add(usuariosCadastrados);
-
-//        if (emailCadastrado(this.email)){
-//            return null;
-//        }
 
         return this.usuariosCadastrados;
     }
@@ -96,13 +92,9 @@ public class TuiterLite<T> {
     public void atualizaRank(){
         usuariosCadastrados.setNumeroTwitts(numTwitts++);
 
-
-        switch (numTwitts){
-            case 200:
-                usuariosCadastrados.setNivel(NivelUsuario.SENIOR);
-                break;
-            case 1000:
-                usuariosCadastrados.setNivel(NivelUsuario.NINJA);
+        switch (numTwitts) {
+            case 200 -> usuariosCadastrados.setNivel(NivelUsuario.SENIOR);
+            case 1000 -> usuariosCadastrados.setNivel(NivelUsuario.NINJA);
         }
     }
 
@@ -112,7 +104,6 @@ public class TuiterLite<T> {
      * @return A hashtag mais comum, ou null se nunca uma hashtag houver sido tuitada.
      */
     public String getHashtagMaisComum() {
-        int cont = 0;
 
         ArrayList todasHashtags = new ArrayList();
         ArrayList hashtags;
@@ -121,20 +112,18 @@ public class TuiterLite<T> {
 
         int occurrence;
         //Adiciona todas as hashtags de todos os Twitters digitados
-        for (int i = 0; i < tuitesFeitosArrayList.size(); i++){
-            hashtags = tuitesFeitosArrayList.get(i).getHashtags();
+        for (Tuite tuite : tuitesFeitosArrayList) {
+            hashtags = tuite.getHashtags();
             todasHashtags.addAll(hashtags);
         }
-        //Buscar a palavra mais dita.
 
+        //Buscar a palavra mais dita.
         for (int i = 0; i < todasHashtags.size(); i++){
 
             hashTagsRepetidas.add(todasHashtags.get(i));
             occurrence = Collections.frequency(todasHashtags, todasHashtags.get(i));
             ID = i;
             Registra(occurrence, ID);
-
-
         }
 
 
@@ -147,10 +136,10 @@ public class TuiterLite<T> {
         int maior = registros.get(0).getOccurrance();
         int ID = 0;
 
-        for (int i = 0; i < registros.size(); i++){
-            if (registros.get(i).getOccurrance() > maior){
-                maior = registros.get(i).getOccurrance();
-                ID = registros.get(i).getID();
+        for (RegistraMaiorHashtag registro : registros) {
+            if (registro.getOccurrance() > maior) {
+                maior = registro.getOccurrance();
+                ID = registro.getID();
             }
         }
     return ID;
@@ -162,7 +151,6 @@ public class TuiterLite<T> {
     }
 
     public boolean emailCadastrado(String email){
-
         for (Usuario usuario : usuariosCadastradosArrayList) {
             this.emailAux = usuario.getEmail();
             if ((this.emailAux.compareTo(email)) == 0){

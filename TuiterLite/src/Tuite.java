@@ -1,10 +1,11 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Tuite<T> {
 
     private final Usuario autor;
     private final String texto;
-    private Object anexo;
+    private T anexo;
     private ArrayList<String> hashtags;
 
     // hashtags?
@@ -16,13 +17,11 @@ public class Tuite<T> {
         this.hashtags = new ArrayList<>();
     }
 
-    public void anexarAlgo(Object anexo) {
+    public void anexarAlgo(T anexo) {
         this.anexo = anexo;
     }
 
-    public Object getAnexo() {
-        return this.anexo;
-    }
+    public Object getAnexo() { return this.anexo; }
 
     public Usuario getAutor() {
         return this.autor;
@@ -38,7 +37,7 @@ public class Tuite<T> {
 
     public ArrayList<String> getHashtags() {
 
-        //zeraHashTags();
+        zeraHashTags();
 
         String textos[] = texto.split("[\\s,!,...]");
 

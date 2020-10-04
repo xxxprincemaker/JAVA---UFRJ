@@ -87,7 +87,7 @@ public class TuiterLiteTest {
     public void testeApenasUmTipoPermitidoComoAnexo() {
 
         // vamos criar um outro TuiterLite aqui, especificando que ele deverá se relacionar com o tipo Image
-        TuiterLite<Image> tuiterLiteQueAceitaApenasImagensComoAnexo = new TuiterLite<>();
+        TuiterLite<Image> tuiterLiteQueAceitaApenasImagensComoAnexo = new TuiterLite<Image>();
         tuiterLiteQueAceitaApenasImagensComoAnexo.cadastrarUsuario(usuario.getNome(), usuario.getEmail());
         Tuite<Image> tuite = tuiterLiteQueAceitaApenasImagensComoAnexo.tuitarAlgo(usuario, "Testando");
 
@@ -95,11 +95,11 @@ public class TuiterLiteTest {
         tuite.anexarAlgo(usuario.getFoto());
         assertNotNull(tuite.getAnexo());
 
-        // Deixe as linhas seguintes comentadas, mas verifique o comportamento desejado indicado abaixo
-        // (note que estamos tentando anexar outros tipos de objetos que não são Image).
-
-//        tuite.anexarAlgo(usuario);       // essa linha, se fosse descomentada, daria erro de compilação
-//        tuite.anexarAlgo("1234");        // essa linha, se fosse descomentada, daria erro de compilação
+//        // Deixe as linhas seguintes comentadas, mas verifique o comportamento desejado indicado abaixo
+//        // (note que estamos tentando anexar outros tipos de objetos que não são Image).
+//
+//        tuite.anexarAlgo(usuario);        // essa linha, se fosse descomentada, daria erro de compilação
+//        tuite.anexarAlgo("1234");  // essa linha, se fosse descomentada, daria erro de compilação
 //        tuite.anexarAlgo(new Object());  // essa linha, se fosse descomentada, daria erro de compilação
     }
 
