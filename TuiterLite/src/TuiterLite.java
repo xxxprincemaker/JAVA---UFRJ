@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 /**
  *  Esta classe implementa um sistema de mensagens curtas estilo Twitter.
@@ -26,7 +27,6 @@ public class TuiterLite<T> {
                         this.tuitesFeitosArrayList = new ArrayList<>();
                         this.registros = new ArrayList<RegistraMaiorHashtag>();
                         }
-
     /**
      * Cadastra um usuário, retornando o novo objeto Usuario criado.
      * Se o email informado já estiver em uso, não faz nada e retorna null.
@@ -160,6 +160,30 @@ public class TuiterLite<T> {
         return false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario  = (Usuario) o;
+        return emailAux.equals(usuario.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(emailAux);
+    }
+
+    //    @Override
+//    public boolean equals(Object object){
+//        if (this == object) return true;
+//        if (!(object instanceof Usuario)) return false;
+//        Usuario usuario = (Usuario) object;
+//        return this.emailAux.equals(usuario.getEmail());
+//    }
+//
+//    @Override
+//    public int hashCode() { return Objects.hash(emailAux); }
+
      //Mainzinho bobo, apenas ilustrando String.split(regexp), e o String.startsWith()
 
 //    public static void main(String[] args) {
@@ -171,6 +195,5 @@ public class TuiterLite<T> {
 //            }
 //        }
 //    }
-
 
 }

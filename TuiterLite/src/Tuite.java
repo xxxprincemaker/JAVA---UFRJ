@@ -39,7 +39,8 @@ public class Tuite<T> {
 
         zeraHashTags();
 
-        String textos[] = texto.split("[\\s,!,...]");
+        String[] textos;
+        textos = texto.split("[\\s,!,.]");
 
         for (String palavra : textos){
             if (palavra.startsWith("#")){

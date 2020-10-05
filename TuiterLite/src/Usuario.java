@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Objects;
 
 public class Usuario {
 
@@ -6,7 +7,7 @@ public class Usuario {
     public static final int MIN_TUITES_NINJA = 1000;
     private int numeroTwitts;
 
-    private final String email;
+    public final String email;
     private String nome;
     private Image foto;
 
@@ -46,5 +47,18 @@ public class Usuario {
     public int getNumeroTwitts() { return numeroTwitts;  }
     public void setNumeroTwitts(int numeroTwitts) {
         this.numeroTwitts = numeroTwitts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(getEmail(), usuario.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmail());
     }
 }
